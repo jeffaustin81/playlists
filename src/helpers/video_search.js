@@ -15,7 +15,7 @@ export function video_search(query) {
     if (this.readyState === 4 && this.status === 200) {
       var resultList = JSON.parse(xhttp.responseText).items;
       for (var i = 0; i < resultList.length; ++i) {
-        videos.push({title:resultList[i].snippet.title, thumbnail:resultList[i].snippet.thumbnails.default.url})
+        videos.push({id:resultList[i].id.videoId, title:resultList[i].snippet.title, thumbnail:resultList[i].snippet.thumbnails.default.url})
       }
       that.props.sendResults(videos);
     }

@@ -22,8 +22,10 @@ import VideoResults from './components/VideoResults.js';
 export class App extends Component {
   constructor() {
     super();
+    this.state = {iframe: undefined};
     this.onSearchKeypress = this.onSearchKeypress.bind(this);
     this.onCreatePlaylistKeypress = this.onCreatePlaylistKeypress.bind(this);
+    this.playPlaylist = this.playPlaylist.bind(this);
   }
   onSearchKeypress(e) {
     if (e.charCode === 13) {
@@ -34,6 +36,19 @@ export class App extends Component {
     if (e.charCode === 13) {
       this.props.createPlaylist(e.target.value);
     }
+  }
+  playPlaylist(i) {
+    let videos = this.props.playlists[i].videos;
+    console.log(videos)
+    let url = "https://www.youtube.com/embed/";
+    videos.forEach( (video,i) => {
+      if (i == 0)
+        url += video.id + "?loop=1&autoplay=1&enablejsapi=1&playlist=";
+      else
+        url += video.id + ",";
+      alert(url)
+    });
+    this.setState({iframe:url})
   }
   render() {
     return (
@@ -65,12 +80,14 @@ export class App extends Component {
                     title={playlist.title} 
                     deletePlaylist={(i) => this.props.deletePlaylist(i)}
                     deleteVideo={(playlistId, videoId) => this.props.removeVideo(playlistId, videoId)}
+                    play={(i) => this.playPlaylist(i)}
                   />
                 )
               })
             }
           </div>
         </div>
+        <iframe src={this.state.iframe} />
       </div>
     );
   }

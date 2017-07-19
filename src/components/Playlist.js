@@ -28,6 +28,7 @@ class Playlist extends React.Component {
               x
             </span>
           </h1>
+          <button onClick={() => this.props.play(this.props._key)}>Play Playlist</button>
           {videos}
         </div>
       )
