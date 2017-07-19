@@ -4,16 +4,6 @@ import {
 } from 'redux';
 
 
-export const sendResults = results => ({
-  type: 'SEND_RESULTS',
-  results,
-});
-
-export const createPlaylist = title => ({
-  type: 'CREATE_PLAYLIST',
-  title,
-})
-
 export const searchResults = (state = [], action) => {
   switch (action.type) {
     case 'SEND_RESULTS':
@@ -38,12 +28,3 @@ export const reducers = combineReducers({
   playlist
 });
 
-// store.js
-export function configureStore(initialState = {}) {  
-  const store = createStore(
-    reducers,
-    initialState,
-  )
-  return store;
-};
-export const store = configureStore();  

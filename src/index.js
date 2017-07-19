@@ -5,7 +5,7 @@ import './index.css';
 
 // Add these imports - Step 1
 import { Provider } from 'react-redux';  
-import { store } from './redux';
+import { store } from './store/store';
 
 // Wrap existing app in Provider - Step 2
 ReactDOM.render(  

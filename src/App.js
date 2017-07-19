@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 import {  
   sendResults
-} from './redux';
+} from './store/actions';
 
 import {
   video_search

@@ -23,4 +23,3 @@ export function video_search(query) {
   xhttp.open("GET", url, true);
   xhttp.send();
 }
-
