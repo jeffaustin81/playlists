@@ -10,14 +10,26 @@ class Playlist extends React.Component {
     for (var i = 0; i < this.props.videos.length; ++i) {
       videos.push(
         <Video 
-          title={this.props.videos[i]} 
+          key={i}
+          title={this.props.videos[i].title} 
+          thumbnail={this.props.videos[i].thumbnail} 
           number={i} 
-          remove={(i) => this.props.remove(this.props.locate, i)}
+          remove={(videoId) => this.props.deleteVideo(this.props._key, videoId)}
         />
       )
     }
       return (
-        <div id="playlist" className="playlist"><h1>{this.props.title}<span className="removeX" onClick={() => this.props.removePlaylist(this.props.locate)}>x</span></h1>{videos}</div>
+        <div className="playlist">
+          <h1>{this.props.title}
+            <span 
+              className="removeX" 
+              onClick={() => this.props.deletePlaylist(this.props._key)}
+            >
+              x
+            </span>
+          </h1>
+          {videos}
+        </div>
       )
   }
 }

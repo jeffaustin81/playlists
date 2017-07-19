@@ -1,5 +1,45 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+.sidebar {
+  width:25%;
+  float:left;
+  box-sizing:border-box;
 }
+.results > div > div {
+  padding:15px;
+  border:2px solid gray;
+  border-radius:5px;
+  margin:5px;
+}
+.results img {
+  margin:auto;
+  display:block;
+  padding:5px;
+}
+.sidebar select {
+  width:90%;
+  display:block;
+  margin:auto;
+  margin:5px;
+}
+select option {
+  font-weight:bold;
+  text-align:center;
+  margin:auto;
+}
+
+
+.main {
+  width:75%;
+  box-sizing:border-box;
+  float:left;
+}
+.playlist {
+  width:200px;
+  border:2px solid gray;
+  border-radius:5px;
+  padding:15px;
+  margin:5px;
+}
+
+
+
+

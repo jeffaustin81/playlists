@@ -10,6 +10,13 @@ export function configureStore(initialState = {}) {
     reducers,
     initialState,
   )
+  store.subscribe(() => {
+    localStorage.setItem("playlists", JSON.stringify(store.getState()));
+  });
+
   return store;
 };
-export const store = configureStore();  
+
+let initialState = JSON.parse(localStorage.getItem("playlists")) || {};
+
+export const store = configureStore(initialState);  
