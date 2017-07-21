@@ -20,14 +20,14 @@ class Playlist extends React.Component {
     }
       return (
         <div className="playlist">
-          <h1>{this.props.title}
+          <h3 class="title">{this.props.title}
+          </h3>
             <span 
               className="removeX" 
               onClick={() => this.props.deletePlaylist(this.props._key)}
             >
               x
             </span>
-          </h1>
           <button onClick={() => this.props.play(this.props._key)}>Play Playlist</button>
           {videos}
         </div>

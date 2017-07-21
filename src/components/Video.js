@@ -6,7 +6,7 @@ class Video extends Component {
     return (
       <div className="video">
         <img src={this.props.thumbnail} />
-        {this.props.title}
+        <span class="title">{this.props.title}</span>
         <a className="removeX" onClick={() => this.props.remove(this.props.number)}>X</a>
       </div>
     )

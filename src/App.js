@@ -29,7 +29,7 @@ export class App extends Component {
   }
   onSearchKeypress(e) {
     if (e.charCode === 13) {
-      video_search.bind(this)(e.target.value);
+      video_search(e.target.value, this);
     }
   }
   onCreatePlaylistKeypress(e) {
@@ -39,14 +39,12 @@ export class App extends Component {
   }
   playPlaylist(i) {
     let videos = this.props.playlists[i].videos;
-    console.log(videos)
     let url = "https://www.youtube.com/embed/";
     videos.forEach( (video,i) => {
       if (i == 0)
         url += video.id + "?loop=1&autoplay=1&enablejsapi=1&playlist=";
       else
         url += video.id + ",";
-      alert(url)
     });
     this.setState({iframe:url})
   }
@@ -55,19 +53,17 @@ export class App extends Component {
       <div className="app">
         <div className="sidebar">
           <div className="search">
-            <input type='text' onKeyPress={this.onSearchKeypress} placeholder='Search' />
+            <input type='text' onKeyPress={this.onCreatePlaylistKeypress} placeholder='Create Playlist' />
+            <input type='text' onKeyPress={this.onSearchKeypress} placeholder='Search Youtube' />
           </div>
-          <div className="results">
-            <VideoResults 
-              videos={this.props.results} 
-              playlists={this.props.playlists} 
-              addToPlaylist={(video,playlistId) => this.props.addVideo(video,playlistId)}
-            />
-          </div>
+          <VideoResults 
+            videos={this.props.results} 
+            playlists={this.props.playlists} 
+            addToPlaylist={(video,playlistId) => this.props.addVideo(video,playlistId)}
+          />
         </div>
         <div className="main">
           <div className="createPlaylist">
-            <input type='text' onKeyPress={this.onCreatePlaylistKeypress} placeholder='Create Playlist' />
           </div>
           <div className="playlists">
             {
@@ -87,7 +83,9 @@ export class App extends Component {
             }
           </div>
         </div>
-        <iframe src={this.state.iframe} />
+        { this.state.iframe ? 
+            <iframe src={this.state.iframe} /> : ""
+        }
       </div>
     );
   }
@@ -116,3 +114,4 @@ const AppContainer = connect(
 )(App);
 
 export default AppContainer;  
+

@@ -1,0 +1,159 @@
+html {
+  height:100%;
+  padding:0px;
+}
+
+input + input {
+  margin-top:10px;
+}
+
+#root {
+  height:100%;
+  overflow:hidden;
+}
+
+body{
+  height:100%;
+  overflow:hidden;
+  background:#EEE;
+  padding:0px;
+  margin:0px;
+  padding:0px;
+  margin:0px;
+  .app {
+    height:100%;
+    overflow:hidden;
+    background:#EEE;
+
+    .sidebar {
+      height:100%;
+      background:#FFF;
+      width:400px;
+      border-right:2px solid #CCC;
+      display:inline-block;
+      .search {
+        height:10%;
+        margin:0px 10px;
+      }
+      .search input {
+        width:100%;
+        padding:5px;
+        box-sizing:border-box;
+        border: 1px solid #CCC;
+        border-radius:3px;
+      }
+      .results {
+        height:90%;
+        overflow-y:auto;
+      }
+      .results .result {
+        display:inline-flex;
+        padding:10px;
+        span { 
+          width:250px;
+          margin-right:10px;
+          align-items:center; 
+          white-space:nowrap;
+          overflow:hidden;
+          text-overflow:ellipsis;
+        }
+        img {
+          align-items:center;
+          margin-right:10px;
+          width:50px;
+          height:100%;
+          display:flex;
+        }
+        & + .result {
+          border-top:1px solid #CCC;
+        }
+        select {
+          width: 20px;
+          height: 20px;
+          margin: auto;
+          -webkit-appearance: none;
+          display: block;
+          font-size: 20px;
+          display:inline-block;
+          display:flex;
+          width: 14px;
+          height: 16px;
+          margin: auto;
+          -webkit-appearance: none;
+          display: block;
+          font-size: 20px;
+          line-height: 10px;
+        }
+      }
+    }
+
+    .main {
+      display:inline-block;
+      width:900px;
+      vertical-align:top;
+      height:100%;
+      .playlists {
+        height:100%;
+      }
+      .playlist { 
+        border-right:2px solid #ccc;
+        height:100%;
+        overflow-y:auto;
+        width:250px;
+        float:left;
+        position:relative;
+        .removeX {
+          cursor:pointer;
+          text-transform:uppercase;
+          font-family:sans;
+          position:absolute;
+          right:3px;
+          top:0px;
+          font-weight:bold;
+        }
+        > button {
+          margin:auto;
+          display:block;
+        }
+        h3 {
+          text-align:center;
+        }
+        .video { 
+          position:relative;
+          box-sizing:border-box;
+          padding:10px;
+          width:100%;
+          img {
+            display:block;
+            margin:auto;
+          }
+          span {
+            display:block;
+            text-align:center;
+          }
+          & + .video {
+            border-top:1px solid #CCC;
+          }
+          .removeX { 
+            color:#888;
+            position:absolute;
+            font-family:sans serif;
+            font-weight:bold;
+            right:0px;
+            top:0px;
+            &:hover {
+              cursor:pointer;
+              color:#000;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+iframe {
+  position:fixed;
+  right:0px;
+  bottom:0px;
+}

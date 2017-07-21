@@ -13,11 +13,11 @@ class VideoResults extends Component {
     if (this.props.playlists.length) options.unshift(<option key={-1} selected="selected">+</option>)
 
     return (
-      <div>
+      <div className="results">
         {this.props.videos.map((video, i) => (
-          <div key={i}>
+          <div className="result" key={i}>
             <img src={video.thumbnail} />
-            <div>{video.title}</div>
+            <span>{video.title}</span>
             <select onChange={(e) => this.props.addToPlaylist(video,e.target.value)}>
               {options}
             </select>

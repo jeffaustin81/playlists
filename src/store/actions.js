@@ -13,7 +13,7 @@ export const deletePlaylist = playlistId => ({
   playlistId,
 })
 
-export const removeVideo = (videoId, playlistId) => ({
+export const removeVideo = (playlistId, videoId) => ({
   type: "REMOVE_VIDEO",
   videoId,
   playlistId,
