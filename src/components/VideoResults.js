@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 
 class VideoResults extends Component {
-  render() {
+  constructor() {
+    super();
+    this.state = {value: -1}
+    
+  }
+  renderSelect(video) {
     var options = [];
     for (var i = 0; i < this.props.playlists.length; ++i) {
       options.push(
@@ -10,7 +15,16 @@ class VideoResults extends Component {
         </option>
       )
     }
-    if (this.props.playlists.length) options.unshift(<option key={-1} selected="selected">+</option>)
+    if (this.props.playlists.length) {
+      options.unshift(<option key={-1} value={-1}>+</option>)
+      return (
+        <select value={this.state.value} onChange={(e) => this.props.addToPlaylist(video,e.target.value)}>
+          {options}
+        </select>
+      ) 
+    }
+  }
+  render() {
 
     return (
       <div className="results">
@@ -18,9 +32,7 @@ class VideoResults extends Component {
           <div className="result" key={i}>
             <img src={video.thumbnail} />
             <span>{video.title}</span>
-            <select onChange={(e) => this.props.addToPlaylist(video,e.target.value)}>
-              {options}
-            </select>
+            {this.renderSelect(video)}
           </div>
         ))}
       </div>
