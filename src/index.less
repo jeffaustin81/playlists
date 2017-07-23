@@ -44,9 +44,11 @@ body{
       }
       .results {
         height:90%;
-        overflow-y:auto;
+        overflow-y:scroll;
       }
       .results .result {
+        box-sizing:border-box;
+        width:100%;
         display:inline-flex;
         padding:10px;
         span { 
@@ -68,23 +70,23 @@ body{
           border-top:1px solid #CCC;
         }
         select {
-          width: 20px;
+          width: 19px;
           height: 20px;
-          margin: auto;
+          margin:auto 5px auto auto;
           -webkit-appearance: none;
-          display: block;
-          font-size: 20px;
-          display:inline-block;
-          display:flex;
-          width: 14px;
-          height: 16px;
-          margin: auto;
-          -webkit-appearance: none;
-          display: block;
-          font-size: 20px;
-          line-height: 10px;
-          option {
-            font-size:12px; 
+          font-size: 30px;
+          line-height: 18px;
+          background:transparent;
+          border:0px;
+          outline:none;
+          border-radius:5px;
+          &:hover {
+            color:#AAA;
+          }
+          option { 
+            color:black;
+            font-size:15px; 
+            padding:5px;
             &:first-child {
               display:none;
             }
@@ -102,11 +104,17 @@ body{
         height:100%;
       }
       .playlist { 
-        border-right:2px solid #ccc;
-        height:100%;
-        overflow-y:auto;
-        width:250px;
-        float:left;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        max-height: ~"calc(100% - 40px)";
+        min-height: 160px;
+        box-sizing: border-box;
+        overflow-y: scroll;
+        width: 250px;
+        float: left;
+        position: relative;
+        padding: 0px 10px;
+        margin: 20px 10px;
         position:relative;
         .removeX {
           cursor:pointer;
@@ -162,4 +170,24 @@ iframe {
   position:fixed;
   right:0px;
   bottom:0px;
+}
+
+
+/* Handle */
+.sidebar {
+  ::-webkit-scrollbar-thumb {
+    background: rgb(100,100,100); 
+  }
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+}
+
+.playlists {
+  ::-webkit-scrollbar-thumb {
+    background: rgb(150,150,150); 
+  }
+  ::-webkit-scrollbar {
+    width: 2px;
+  }
 }
