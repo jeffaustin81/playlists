@@ -22,25 +22,32 @@ body .app {
   background: #EEE;
 }
 body .app .sidebar {
+  box-sizing: border-box;
   height: 100%;
   background: #FFF;
   width: 400px;
-  border-right: 2px solid #CCC;
+  border-right: 2px solid #999;
   display: inline-block;
 }
 body .app .sidebar .search {
-  height: 10%;
-  margin: 0px 10px;
+  height: 85px;
+  box-sizing: border-box;
+  border-bottom: 2px solid #999;
+  padding: 0px 10px;
+}
+body .app .sidebar .search > *:first-child {
+  margin-top: 10px;
 }
 body .app .sidebar .search input {
   width: 100%;
   padding: 5px;
   box-sizing: border-box;
-  border: 1px solid #CCC;
+  border: 1px solid #999;
   border-radius: 3px;
 }
 body .app .sidebar .results {
-  height: 90%;
+  height: calc(100% - 85px);
+  margin-left: 3px;
   overflow-y: scroll;
 }
 body .app .sidebar .results .result {
@@ -65,7 +72,7 @@ body .app .sidebar .results .result img {
   display: flex;
 }
 body .app .sidebar .results .result + .result {
-  border-top: 1px solid #CCC;
+  border-top: 1px solid #999;
 }
 body .app .sidebar .results .result select {
   width: 19px;
@@ -77,10 +84,10 @@ body .app .sidebar .results .result select {
   background: transparent;
   border: 0px;
   outline: none;
-  border-radius: 5px;
+  color: #CCC;
 }
 body .app .sidebar .results .result select:hover {
-  color: #AAA;
+  color: #999;
 }
 body .app .sidebar .results .result select option {
   color: black;
@@ -92,25 +99,29 @@ body .app .sidebar .results .result select option:first-child {
 }
 body .app .main {
   display: inline-block;
-  width: 900px;
+  width: calc(100% - 400px);
   vertical-align: top;
   height: 100%;
 }
 body .app .main .playlists {
   height: 100%;
+  white-space: nowrap;
+  overflow-x: auto;
 }
 body .app .main .playlist {
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  max-height: calc(100% - 40px);
+  background: #FFF;
+  border-radius: 5px;
+  border: 2px solid #999;
+  max-height: calc(100% - 20px);
   min-height: 160px;
   box-sizing: border-box;
   overflow-y: scroll;
   width: 250px;
-  float: left;
-  padding: 0px 10px;
-  margin: 20px 10px;
   position: relative;
+  padding: 0px 10px;
+  margin: 10px 10px;
+  display: inline-block;
+  vertical-align: top;
 }
 body .app .main .playlist .removeX {
   cursor: pointer;
@@ -143,7 +154,7 @@ body .app .main .playlist .video span {
   text-align: center;
 }
 body .app .main .playlist .video + .video {
-  border-top: 1px solid #CCC;
+  border-top: 1px solid #999;
 }
 body .app .main .playlist .video .removeX {
   color: #888;
@@ -164,14 +175,15 @@ iframe {
 }
 /* Handle */
 .sidebar ::-webkit-scrollbar-thumb {
-  background: #646464;
+  background: #CCC;
 }
 .sidebar ::-webkit-scrollbar {
-  width: 5px;
+  width: 3px;
 }
 .playlists ::-webkit-scrollbar-thumb {
-  background: #969696;
+  background: #CCC;
 }
 .playlists ::-webkit-scrollbar {
-  width: 2px;
+  width: 3px;
+  border-radius: 10px;
 }

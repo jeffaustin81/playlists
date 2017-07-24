@@ -26,24 +26,31 @@ body{
     background:#EEE;
 
     .sidebar {
+      box-sizing:border-box;
       height:100%;
       background:#FFF;
       width:400px;
-      border-right:2px solid #CCC;
+      border-right:2px solid #999;
       display:inline-block;
       .search {
-        height:10%;
-        margin:0px 10px;
+        height:85px;
+        box-sizing:border-box;
+        border-bottom:2px solid #999;
+        padding:0px 10px;
+        > *:first-child {
+          margin-top:10px;
+        }
       }
       .search input {
         width:100%;
         padding:5px;
         box-sizing:border-box;
-        border: 1px solid #CCC;
+        border: 1px solid #999;
         border-radius:3px;
       }
       .results {
-        height:90%;
+        height: ~"calc(100% - 85px)";
+        margin-left:3px;
         overflow-y:scroll;
       }
       .results .result {
@@ -67,7 +74,7 @@ body{
           display:flex;
         }
         & + .result {
-          border-top:1px solid #CCC;
+          border-top:1px solid #999;
         }
         select {
           width: 19px;
@@ -79,9 +86,9 @@ body{
           background:transparent;
           border:0px;
           outline:none;
-          border-radius:5px;
+          color:#CCC;
           &:hover {
-            color:#AAA;
+            color:#999;
           }
           option { 
             color:black;
@@ -97,25 +104,28 @@ body{
 
     .main {
       display:inline-block;
-      width:900px;
+      width:~"calc(100% - 400px)";
       vertical-align:top;
       height:100%;
       .playlists {
         height:100%;
+        white-space:nowrap;
+        overflow-x:auto;
       }
-      .playlist { 
-        border: 2px solid #ccc;
-        border-radius: 10px;
-        max-height: ~"calc(100% - 40px)";
+      .playlist {  
+        background:#FFF;
+        border-radius:5px;
+        border: 2px solid #999;
+        max-height: ~"calc(100% - 20px)";
         min-height: 160px;
         box-sizing: border-box;
         overflow-y: scroll;
         width: 250px;
-        float: left;
         position: relative;
         padding: 0px 10px;
-        margin: 20px 10px;
-        position:relative;
+        margin: 10px 10px;
+        display:inline-block;
+        vertical-align:top;
         .removeX {
           cursor:pointer;
           text-transform:uppercase;
@@ -146,7 +156,7 @@ body{
             text-align:center;
           }
           & + .video {
-            border-top:1px solid #CCC;
+            border-top:1px solid #999;
           }
           .removeX { 
             color:#888;
@@ -176,18 +186,19 @@ iframe {
 /* Handle */
 .sidebar {
   ::-webkit-scrollbar-thumb {
-    background: rgb(100,100,100); 
+    background: #CCC;
   }
   ::-webkit-scrollbar {
-    width: 5px;
+    width: 3px;
   }
 }
 
 .playlists {
   ::-webkit-scrollbar-thumb {
-    background: rgb(150,150,150); 
+    background: #CCC;
   }
   ::-webkit-scrollbar {
-    width: 2px;
+    width: 3px;
+    border-radius:10px;
   }
 }
