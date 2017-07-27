@@ -4,6 +4,24 @@ import Video from './Video.js'
 
 
 class Playlist extends React.Component {
+  constructor() { 
+    super();
+    this.state = { editing:false };
+    this.titleEdit = this.titleEdit.bind(this);
+    this.titleEditing = this.titleEditing.bind(this);
+  }
+  titleEdit(e) {
+    this.setState({editing: true})
+    e.target.focus();
+
+  }
+  titleEditing(e, key) {
+    this.props.updateTitle(key, e.target.innerHTML);
+  }
+
+
+
+
   render() {
 
     var videos = [];
@@ -20,7 +38,13 @@ class Playlist extends React.Component {
     }
       return (
         <div className="playlist">
-          <h3 class="title">{this.props.title}
+          <h3 
+            className="title"
+            contentEditable={this.state.editing} 
+            onClick={this.titleEdit} 
+            onBlur={(e) => {this.titleEditing(e,this.props._key)}}
+          >
+            {this.props.title}
           </h3>
             <span 
               className="removeX" 
