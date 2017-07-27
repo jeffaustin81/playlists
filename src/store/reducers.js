@@ -24,15 +24,16 @@ export const playlists = (state = [], action) => {
       newState.splice(action.playlistId, 1);
       return newState;
     case 'REMOVE_VIDEO':
-      console.log(state)
-      console.log(action)
       var newState =  state.slice();
       newState[action.playlistId].videos.splice(action.videoId, 1)
       return newState;
     case 'ADD_VIDEO':
-      console.log(action)
       var newState =  state.slice();
       newState.slice()[action.playlistId].videos.push(action.video)
+      return newState;
+    case 'RENAME_PLAYLIST':
+      var newState =  state.slice();
+      newState.slice()[action.playlistId].title = action.title;
       return newState;
     default:
       return state;

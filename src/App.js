@@ -9,7 +9,8 @@ import {
   createPlaylist,
   deletePlaylist,
   addVideo,
-  removeVideo
+  removeVideo,
+  renamePlaylist,
 } from './store/actions';
 
 import {
@@ -77,6 +78,7 @@ export class App extends Component {
                     deletePlaylist={(i) => this.props.deletePlaylist(i)}
                     deleteVideo={(playlistId, videoId) => this.props.removeVideo(playlistId, videoId)}
                     play={(i) => this.playPlaylist(i)}
+                    updateTitle={(playlistId, title) => {this.props.renamePlaylist(playlistId, title)}}
                   />
                 )
               })
@@ -104,6 +106,7 @@ const mapDispatchToProps = {
   sendResults,
   createPlaylist,
   deletePlaylist,
+  renamePlaylist,
   addVideo,
   removeVideo
 };

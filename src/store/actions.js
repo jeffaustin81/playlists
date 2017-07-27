@@ -13,6 +13,12 @@ export const deletePlaylist = playlistId => ({
   playlistId,
 })
 
+export const renamePlaylist = (playlistId, title) => ({
+  type: "RENAME_PLAYLIST",
+  title,
+  playlistId,
+})
+
 export const removeVideo = (playlistId, videoId) => ({
   type: "REMOVE_VIDEO",
   videoId,
