@@ -17,6 +17,7 @@ import {
   video_search
 } from './helpers/video_search.js';
 import Playlist from './components/Playlist.js'
+import Video from './components/Video.js'
 import VideoResults from './components/VideoResults.js';
 
 
@@ -27,6 +28,8 @@ export class App extends Component {
     this.onSearchKeypress = this.onSearchKeypress.bind(this);
     this.onCreatePlaylistKeypress = this.onCreatePlaylistKeypress.bind(this);
     this.playPlaylist = this.playPlaylist.bind(this);
+    this.renderPlaylists = this.renderPlaylists.bind(this);
+    this.renderVideos = this.renderVideos.bind(this);
   }
   onSearchKeypress(e) {
     if (e.charCode === 13) {
@@ -49,6 +52,39 @@ export class App extends Component {
     });
     this.setState({iframe:url})
   }
+
+  renderPlaylists() {
+    var playlists = this.props.playlists.map( (playlist, id) => {
+      return (
+        <Playlist 
+          key={id}
+          deletePlaylist={(id) => this.props.deletePlaylist(id)}
+          updateTitle={(title) => {this.props.renamePlaylist(id, title)}}
+          play={() => this.playPlaylist(id)}
+          title={playlist.title} 
+        >
+          { this.renderVideos(playlist.videos, id) }
+        </Playlist>
+      )
+    });
+    return playlists;
+  }
+
+  renderVideos(videos, playlist_id) {
+    return (
+      videos.map( (video, i) => {
+        return ( 
+          <Video 
+            remove={() => this.props.removeVideo(playlist_id, i)}
+            title={video.title}
+            key={i}
+            thumbnail={video.thumbnail} 
+          />
+        )
+      })
+    )
+  }
+
   render() {
     return (
       <div className="app">
@@ -67,22 +103,7 @@ export class App extends Component {
           <div className="createPlaylist">
           </div>
           <div className="playlists">
-            {
-              this.props.playlists.map( (playlist, i) => {
-                return (
-                  <Playlist 
-                    key={i}
-                    _key={i}
-                    videos={playlist.videos} 
-                    title={playlist.title} 
-                    deletePlaylist={(i) => this.props.deletePlaylist(i)}
-                    deleteVideo={(playlistId, videoId) => this.props.removeVideo(playlistId, videoId)}
-                    play={(i) => this.playPlaylist(i)}
-                    updateTitle={(playlistId, title) => {this.props.renamePlaylist(playlistId, title)}}
-                  />
-                )
-              })
-            }
+            {this.renderPlaylists()}
           </div>
         </div>
         { this.state.iframe ? 
