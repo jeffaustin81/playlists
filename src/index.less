@@ -107,6 +107,9 @@ body{
       width:~"calc(100% - 400px)";
       vertical-align:top;
       height:100%;
+      &.playing {
+        height:70%;
+      }
       .playlists {
         height:100%;
         white-space:nowrap;
@@ -135,9 +138,8 @@ body{
           top:0px;
           font-weight:bold;
         }
-        > button {
-          margin:auto;
-          display:block;
+        > div {
+          text-align:center;
         }
         h3 {
           text-align:center;
@@ -175,13 +177,22 @@ body{
     }
   }
 }
-
-iframe {
+.player {
+  width:~"calc(100% - 400px)";
+  height:30%;
   position:fixed;
-  right:0px;
   bottom:0px;
-}
+  right:0px;
+  border-top:2px solid #999;;
 
+  iframe {
+    display:block;
+    height:100%;
+    margin:auto;
+    width:432px;
+    border:0px;
+  }
+}
 
 /* Handle */
 .sidebar {

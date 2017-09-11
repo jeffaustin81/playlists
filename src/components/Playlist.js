@@ -32,7 +32,7 @@ class Playlist extends React.Component {
             >
               x
             </span>
-          <button onClick={this.props.play}>Play Playlist</button>
+          <div onClick={this.props.play}>&#9658;</div>
           {this.props.children}
         </div>
       )

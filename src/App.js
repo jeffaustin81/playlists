@@ -99,7 +99,7 @@ export class App extends Component {
             addToPlaylist={(video,playlistId) => this.props.addVideo(video,playlistId)}
           />
         </div>
-        <div className="main">
+        <div className={this.state.iframe === undefined ? "main" : "main playing"}>
           <div className="createPlaylist">
           </div>
           <div className="playlists">
@@ -107,7 +107,7 @@ export class App extends Component {
           </div>
         </div>
         { this.state.iframe ? 
-            <iframe src={this.state.iframe} /> : ""
+            <div className="player"><iframe src={this.state.iframe} /></div> : ""
         }
       </div>
     );

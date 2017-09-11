@@ -103,6 +103,9 @@ body .app .main {
   vertical-align: top;
   height: 100%;
 }
+body .app .main.playing {
+  height: 70%;
+}
 body .app .main .playlists {
   height: 100%;
   white-space: nowrap;
@@ -132,9 +135,8 @@ body .app .main .playlist .removeX {
   top: 0px;
   font-weight: bold;
 }
-body .app .main .playlist > button {
-  margin: auto;
-  display: block;
+body .app .main .playlist > div {
+  text-align: center;
 }
 body .app .main .playlist h3 {
   text-align: center;
@@ -168,10 +170,20 @@ body .app .main .playlist .video .removeX:hover {
   cursor: pointer;
   color: #000;
 }
-iframe {
+.player {
+  width: calc(100% - 400px);
+  height: 30%;
   position: fixed;
-  right: 0px;
   bottom: 0px;
+  right: 0px;
+  border-top: 2px solid #999;
+}
+.player iframe {
+  display: block;
+  height: 100%;
+  margin: auto;
+  width: 432px;
+  border: 0px;
 }
 /* Handle */
 .sidebar ::-webkit-scrollbar-thumb {
