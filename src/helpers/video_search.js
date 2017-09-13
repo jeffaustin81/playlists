@@ -3,7 +3,7 @@ const key = 'AIzaSyCR7M6CQcjevymrItkF3cOdDgLSClKMeW0';
 
 
 function build_url (query) {
-  return youtube_url + '?key='  + key + '&part=snippet&q=' + query + '&maxResults=25&type=video';
+  return youtube_url + '?key='  + key + '&part=snippet&q=' + query + '&maxResults=50&type=video';
 }
 
 export function video_search(query, context) {

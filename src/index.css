@@ -1,201 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-overflow: ellipsis;
+  font-family: Verdana, sans;
+}
 html {
   height: 100%;
-  padding: 0px;
-}
-input + input {
-  margin-top: 10px;
-}
-#root {
-  height: 100%;
-  overflow: hidden;
+  width: 100%;
 }
 body {
-  height: 100%;
-  overflow: hidden;
-  background: #EEE;
-  padding: 0px;
-  margin: 0px;
-}
-body .app {
-  height: 100%;
-  overflow: hidden;
-  background: #EEE;
-}
-body .app .sidebar {
-  box-sizing: border-box;
-  height: 100%;
-  background: #FFF;
-  width: 400px;
-  border-right: 2px solid #999;
-  display: inline-block;
-}
-body .app .sidebar .search {
-  height: 85px;
-  box-sizing: border-box;
-  border-bottom: 2px solid #999;
-  padding: 0px 10px;
-}
-body .app .sidebar .search > *:first-child {
-  margin-top: 10px;
-}
-body .app .sidebar .search input {
   width: 100%;
-  padding: 5px;
-  box-sizing: border-box;
-  border: 1px solid #999;
-  border-radius: 3px;
+  height: inherit;
 }
-body .app .sidebar .results {
-  height: calc(100% - 85px);
-  margin-left: 3px;
-  overflow-y: scroll;
-}
-body .app .sidebar .results .result {
-  box-sizing: border-box;
-  width: 100%;
-  display: inline-flex;
-  padding: 10px;
-}
-body .app .sidebar .results .result span {
-  width: 250px;
-  margin-right: 10px;
-  align-items: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-body .app .sidebar .results .result img {
-  align-items: center;
-  margin-right: 10px;
-  width: 50px;
-  height: 100%;
+#root {
+  height: inherit;
   display: flex;
 }
-body .app .sidebar .results .result + .result {
-  border-top: 1px solid #999;
-}
-body .app .sidebar .results .result select {
-  width: 19px;
-  height: 20px;
-  margin: auto 5px auto auto;
-  -webkit-appearance: none;
-  font-size: 30px;
-  line-height: 18px;
-  background: transparent;
-  border: 0px;
-  outline: none;
-  color: #CCC;
-}
-body .app .sidebar .results .result select:hover {
-  color: #999;
-}
-body .app .sidebar .results .result select option {
-  color: black;
-  font-size: 15px;
-  padding: 5px;
-}
-body .app .sidebar .results .result select option:first-child {
-  display: none;
-}
-body .app .main {
-  display: inline-block;
-  width: calc(100% - 400px);
-  vertical-align: top;
-  height: 100%;
-}
-body .app .main.playing {
-  height: 70%;
-}
-body .app .main .playlists {
-  height: 100%;
-  white-space: nowrap;
-  overflow-x: auto;
-}
-body .app .main .playlist {
-  background: #FFF;
-  border-radius: 5px;
-  border: 2px solid #999;
-  max-height: calc(100% - 20px);
-  min-height: 160px;
-  box-sizing: border-box;
-  overflow-y: scroll;
-  width: 250px;
-  position: relative;
-  padding: 0px 10px;
-  margin: 10px 10px;
-  display: inline-block;
-  vertical-align: top;
-}
-body .app .main .playlist .removeX {
-  cursor: pointer;
-  text-transform: uppercase;
-  font-family: sans;
-  position: absolute;
-  right: 3px;
-  top: 0px;
-  font-weight: bold;
-}
-body .app .main .playlist > div {
-  text-align: center;
-}
-body .app .main .playlist h3 {
-  text-align: center;
-}
-body .app .main .playlist .video {
-  position: relative;
-  box-sizing: border-box;
-  padding: 10px;
+.app {
   width: 100%;
-}
-body .app .main .playlist .video img {
-  display: block;
   margin: auto;
+  height: 100%;
+  background-color: #f6f6ef;
 }
-body .app .main .playlist .video span {
-  display: block;
-  text-align: center;
+.main {
+  display: flex;
+  height: calc(100% - 31px);
 }
-body .app .main .playlist .video + .video {
-  border-top: 1px solid #999;
+.gutter {
+  height: 100%;
+  width: 300px;
+  overflow-y: auto;
+  border-right: 1px solid #CCC;
 }
-body .app .main .playlist .video .removeX {
-  color: #888;
-  position: absolute;
-  font-family: sans serif;
-  font-weight: bold;
-  right: 0px;
-  top: 0px;
+.detailpanel {
+  overflow-y: auto;
+  flex: 1;
 }
-body .app .main .playlist .video .removeX:hover {
-  cursor: pointer;
-  color: #000;
+.detailpanel .playlist div.playlisttopbar {
+  padding: 5px;
+  display: flex;
+  margin: 5px 0px;
+}
+.detailpanel .playlist div.playlisttopbar button:first-child {
+  margin-right: 5px;
+}
+.detailpanel .playlist div.playlisttopbar div {
+  margin-left: auto;
+}
+.detailpanel .video {
+  padding: 3px 0px 3px 5px;
+  border-top: 1px solid #CCC;
+  display: flex;
+}
+.detailpanel .video div {
+  margin-left: auto;
+  margin-right: 5px;
+}
+.detailpanel .video:last-child {
+  border-bottom: 1px solid #CCC;
+}
+.topbar {
+  height: 30px;
+  border-bottom: 1px solid #CCC;
+  background: #0066ff;
+  display: flex;
+  align-items: center;
+}
+.topbar span {
+  margin: 0 5px;
+}
+.topbar span.searchWrapper {
+  margin-left: auto;
+}
+button {
+  border: 1px solid #777;
+  background: transparent;
+  padding: 2px 6px;
+  height: 20px;
+  border-radius: 5px;
+}
+button:hover {
+  background: #CCC;
+}
+.gutter .playlist {
+  display: flex;
+  border-bottom: 1px solid #AAA;
+  padding: 4px;
+}
+.gutter .playlist h3 {
+  max-width: 300px;
+  overflow: hidden;
 }
 .player {
-  width: calc(100% - 400px);
-  height: 30%;
-  position: fixed;
-  bottom: 0px;
-  right: 0px;
-  border-top: 2px solid #999;
+  border-left: 1px solid #CCC;
+  display: flex;
+  height: 100%;
 }
 .player iframe {
-  display: block;
-  height: 100%;
-  margin: auto;
-  width: 432px;
+  align-self: center;
   border: 0px;
-}
-/* Handle */
-.sidebar ::-webkit-scrollbar-thumb {
-  background: #CCC;
-}
-.sidebar ::-webkit-scrollbar {
-  width: 3px;
-}
-.playlists ::-webkit-scrollbar-thumb {
-  background: #CCC;
-}
-.playlists ::-webkit-scrollbar {
-  width: 3px;
-  border-radius: 10px;
 }

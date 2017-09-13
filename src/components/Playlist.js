@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import Video from './Video.js'
+import React from 'react';
 
 
 
@@ -18,21 +17,26 @@ class Playlist extends React.Component {
   render() {
       return (
         <div className="playlist"> 
-          <h3 
-            className="title"
-            contentEditable={this.state.editing} 
-            onClick={this.titleEdit} 
-            onBlur={(e) => {this.props.updateTitle(e.target.innerHTML)}}
-          >
-            {this.props.title}
-          </h3>
-            <span 
-              className="removeX" 
-              onClick={() => this.props.deletePlaylist(this.props._key)}
+          <div className="playlisttopbar">
+            <h3 
+              className="title"
+              contentEditable={this.state.editing} 
+              onClick={this.titleEdit} 
+              onBlur={(e) => {this.props.updateTitle(e.target.innerHTML)}}
             >
-              x
-            </span>
-          <div onClick={this.props.play}>&#9658;</div>
+              {this.props.title}
+            </h3>
+            <div class="buttons">
+              <button
+                className="removeX" 
+                onClick={() => this.props.deletePlaylist(this.props._key)}
+              >
+                Delete
+              </button> 
+              <button onClick={this.props.play}>Play</button>
+            </div>
+          </div>
+
           {this.props.children}
         </div>
       )

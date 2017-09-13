@@ -5,9 +5,8 @@ class Video extends Component {
   render() {
     return (
       <div className="video">
-        <img src={this.props.thumbnail} />
-        <span className="title">{this.props.title}</span>
-        <a className="removeX" onClick={this.props.remove}>X</a>
+        <span className="title">{this.props.title}</span> 
+        {this.props.children}
       </div>
     )
   }

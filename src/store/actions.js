@@ -30,3 +30,9 @@ export const addVideo = (video, playlistId) => ({
   video,
   playlistId,
 })
+
+export const openPlaylist = playlistId => ({
+  type: "OPEN_PLAYLIST",
+  playlistId,
+})
+

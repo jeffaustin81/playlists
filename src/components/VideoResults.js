@@ -30,7 +30,6 @@ class VideoResults extends Component {
       <div className="results">
         {this.props.videos.map((video, i) => (
           <div className="result" key={i}>
-            <img src={video.thumbnail} />
             <span>{video.title}</span>
             {this.renderSelect(video)}
           </div>

@@ -14,25 +14,21 @@ export const searchResults = (state = [], action) => {
 }
 
 export const playlists = (state = [], action) => {
+  let newState = state.slice();
   switch (action.type) {
     case 'CREATE_PLAYLIST':
-      var newState =  state.slice();
       newState.push({title: action.title, videos: []});
       return newState;
     case 'DELETE_PLAYLIST':
-      var newState =  state.slice();
       newState.splice(action.playlistId, 1);
       return newState;
     case 'REMOVE_VIDEO':
-      var newState =  state.slice();
       newState[action.playlistId].videos.splice(action.videoId, 1)
       return newState;
     case 'ADD_VIDEO':
-      var newState =  state.slice();
       newState.slice()[action.playlistId].videos.push(action.video)
       return newState;
     case 'RENAME_PLAYLIST':
-      var newState =  state.slice();
       newState.slice()[action.playlistId].title = action.title;
       return newState;
     default:
