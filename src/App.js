@@ -64,7 +64,7 @@ export class App extends Component {
         return ""
       return (
         <Playlist 
-          key={id}
+          _key={id}
           deletePlaylist={(id) => this.props.deletePlaylist(id)}
           play={() => this.playPlaylist(id)}
           updateTitle={(title) => {this.props.renamePlaylist(id, title)}}
@@ -92,17 +92,16 @@ export class App extends Component {
 
   renderVideos(videos, playlist_id) {
     return (
-      videos.map( (video, i) => {
+      videos.map( (video, id) => {
         return ( 
           <Video 
-            remove={() => this.props.removeVideo(playlist_id, i)}
             title={video.title}
-            key={i}
+            key={id}
           >
             <div>
               <button
-                className="removeX" 
-                onClick={this.props.remove}
+                className="removeX"
+                onClick={() => {this.props.removeVideo(playlist_id, id)}}
                >Delete</button>
               <button onClick={this.props.play}>Play</button>
             </div>
@@ -139,7 +138,7 @@ export class App extends Component {
     if (this.props.playlists.length) {
       options.unshift(<option key={-1} value={-1}>+</option>)
       return (
-        <select value={this.state.value} onChange={(e) => this.addToPlaylist(video,e.target.value)}>
+        <select value={this.state.value} onChange={(e) => this.props.addVideo(video,e.target.value)}>
           {options}
         </select>
       ) 
@@ -176,8 +175,6 @@ export class App extends Component {
     );
   }
 }
-
-
 
 
 
